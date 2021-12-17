@@ -1,22 +1,22 @@
-const _____ = 'MAKE SURE TO FILL ME IN!!!';
+const getTodoListElement = "MAKE SURE TO FILL ME IN!!!";
 
 const nextId = (array) => array[array.length - 1].id + 1;
 
 const todoList = [
   {
-    label: 'Learn about JS Data Types',
+    label: "Learn about JS Data Types",
     complete: true,
-    dueDate: new Date('2021-11-22')
+    dueDate: new Date("2021-11-22"),
   },
   {
-    label: 'Learn about Iteration',
+    label: "Learn about Iteration",
     complete: false,
-    dueDate: new Date('2021-11-24')
+    dueDate: new Date("2021-11-24"),
   },
-]
+];
 
 function getTodoListElement() {
-  return document.querySelector('#todoList')
+  return document.querySelector("#todoList");
 }
 
 // 🚧 Task 0: Complete the renderTask() function below by filling in the blanks!
@@ -25,8 +25,8 @@ function getTodoListElement() {
 // Fill in the _____ below with the appropriate code.
 
 function renderTask(task) {
-  const li = _____
-  li.className = 'flex justify-between';
+  const li = document.createElement("li");
+  li.className = "flex justify-between";
   li.dataset.taskId = task.id;
   li.innerHTML = `
   <span class="task-label">
@@ -36,24 +36,24 @@ function renderTask(task) {
 
   </span>
   <span class="completed">
-    <i class="far ${task.complete ? 'fa-check-square' : 'fa-square'} text-4xl text-green-300"></i>
+    <i class="far ${task.complete ? "fa-check-square" : "fa-square"} text-4xl text-green-300"></i>
   </span>
   `;
-  // target the .task-label and .due-date spans 
-  const taskLabelEl = _____
-  const dueDateEl = _____
+  // target the .task-label and .due-date spans
+  const taskLabelEl = document.querySelector(".task.id");
+  const dueDateEl = document.querySelector(".due-date");
   // fill them in with the appropriate content from the task object
-  taskLabelEl._____ = _____;
-  dueDateEl._____ = _____;
+  taskLabelEl.textContent = task.label;
+  dueDateEl.textContent = task.dueDate;
   // add the li to the todoList within the DOM
-  _____
+  document.querySelector("#todoList").append(li);
   return li;
 }
 
 // 🚧 Task 1: Iterate over the tasks in the todoList, render the task and append it to the todoList element in the DOM
 function loadTodoList(todoList) {
   const target = getTodoListElement();
-  _____
+  todoList.forEach(renderTask);
 }
 
 loadTodoList(todoList);
@@ -64,12 +64,12 @@ function addTask(todoList, task) {
   const newTask = {
     id: nextId(todoList),
     ...task,
-    complete: false
-  }
+    complete: false,
+  };
   todoList.push(newTask);
   // Render the newTask to the DOM within the #todoList
-  _____
-  return newTask
+  _____;
+  return newTask;
 }
 
 // // 👟👟👟 uncomment the lines below to test
@@ -77,15 +77,12 @@ function addTask(todoList, task) {
 // console.log('addTask', addTask(todoList, {label: 'Practice using the filter method'}))
 // console.log('todoList after addTask', todoList)
 
-
-
-
 // 🚧 Task 3: Remove the task element from the DOM
 
 function removeTask(todoList, taskId) {
-  const indexToRemove = todoList.findIndex(task => task.id === taskId);
+  const indexToRemove = todoList.findIndex((task) => task.id === taskId);
   // Remove the task element from the DOM
-  _____
+  _____;
   return todoList.splice(indexToRemove, 1)[0];
 }
 
@@ -98,17 +95,14 @@ function removeTask(todoList, taskId) {
 //   console.log('todoList after removeTask', todoList);
 // }, 2000)
 
-
-
-
 // BONUS DELIVERABLE
 // 🚧 Task 4: Update the element for the task in the DOM
 
 function toggleComplete(todoList, taskId) {
-  const task = todoList.find(task => task.id === taskId)
+  const task = todoList.find((task) => task.id === taskId);
   task.complete = !task.complete;
   // Update the Task in the DOM to indicate that the task is completed.
-  _____
+  _____;
   return task;
 }
 
